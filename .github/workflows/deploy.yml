@@ -5,7 +5,7 @@ on:
       release_tag:
         description: Release containing website.zip
         required: true
-        default: website-2026-11-08
+        default: website-2026-11-09-mobile
         type: string
 permissions:
   contents: read
@@ -27,7 +27,7 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           curl --fail --location --retry 3 --output website.zip "https://github.com/$REPOSITORY/releases/download/$RELEASE_TAG/website.zip"
-          echo "3b13d214cf8a923fda721ecc871fd301e023fd29cebc2a7c603b46ad7600380a  website.zip" | sha256sum --check -
+          echo "694f4eec462407f77a747a7b8b5b9f9fcb164926471541370f3ab05cbd6ad482  website.zip" | sha256sum --check -
           mkdir public
           unzip -q website.zip -d public
           test -f public/index.html
